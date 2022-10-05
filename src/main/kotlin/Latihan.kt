@@ -4,26 +4,25 @@ fun main() {
     var biayaParkir: Float
 
     //input waktunya disini ya :) (waktu dalam satuan jam)
-    waktuParkir = 2
+    waktuParkir = 24
 
     //peraturan biaya parkir
     val tarifDasar = 1.0
-    val tarifPerjam1 = 0.5
-    val tarifPerjam2 = 1.1
+    val tarifPerjam1 = 1.0
+    val tarifPerjam2 = 0.5
     val maxTarif = 15
 
-    //proses pentarifan
-    if (waktuParkir < 5) {
-        biayaParkir = (tarifDasar*waktuParkir).toFloat()
-    } else if ((waktuParkir < 26) && (waktuParkir > 5)) {
-        biayaParkir = tarifDasar + (waktuParkir * tarifPerjam2)
-    } else if (waktuParkir < 5){
-        biayaParkir = tarifDasar + (waktuParkir * tarifPerjam1)
-    }
-
-
-    //out
+    //proses pentarifan dan biaya total
     println("Lama Parkir : $waktuParkir")
-    println("Biaya Parkir : $biayaParkir")
+    if (waktuParkir < 5) {
+        biayaParkir = (tarifDasar+(tarifPerjam1*waktuParkir)).toFloat()
+        println("Biaya Parkir : $biayaParkir")
+    } else if ((waktuParkir < 24) && (waktuParkir > 5)) {
+        biayaParkir = (tarifDasar + (tarifPerjam2*waktuParkir)).toFloat()
+        println("Biaya Parkir : $biayaParkir")
+    } else if (waktuParkir == 24){
+        biayaParkir = maxTarif.toFloat()
+    } else {
 
+    }
 }
